@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrega N2</title>
 </head>
+
 <body>
-    <h1>Hola Mundo</h1>
+    <h1>Sistema para precios a productos</h1>
+    <p>Calculara el precio de su producto, junto al porcentaje de ganancia, y opcional si quiere agregar impuesto IVA o
+        no</p>
+    <p></p>
+
+    <div>
+        <form class="formulario">
+            <div>
+                <label">Cual es el nombre del producto?</label>
+                <input id="nombreProd" placeholder="Producto" type="text">
+            </div>
+            <div>
+                <Label>Cuanto le costo el producto?</Label>
+                <input id="precioProd" placeholder="Precio" type="number">
+            </div>
+            <div>
+                <Label>Que porcentaje quieres ganar?</Label>
+                <input id="profitProd" placeholder="Profit" type="number">
+            </div>
+            <div>
+                <label for="">Quieres Agregar IVA ?</label>
+                <select name="" id="ivaProd">
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <button id="btnGenerar">Generar Precio</button>
+        </form>
+
+        <div>
+            <h2>Lista de productos</h2>
+            <div id="listaProductos">
+
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
+
 </html>
