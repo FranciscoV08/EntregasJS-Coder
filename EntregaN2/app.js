@@ -17,23 +17,25 @@ const crearPrecio = (e) => {
     const precioForm = document.getElementById("precioProd").value;
     const profitForm = document.getElementById("profitProd").value;
     const ivaForm = document.getElementById("ivaProd").value;
-
+    // Variable para acumular iva
     let totalIVA = 0;
     
     if (profitForm <= 0 || profitForm >=60) {
         return alert("El profit tiene que estar en un rango de 1 - 59 %")
+    }else if(precioForm <= 1000){
+        return alert("El costo del producto debe ser mayor a 100")
     }
-
     // calcula el precio en base a la inversion al producto y el porcentaje a ganar
-   const total = calcularPrecioVenta(precioForm, profitForm)
-   
+        const total = calcularPrecioVenta(precioForm, profitForm)
+   if (ivaForm === "Si") {
     // agregarle iva
-    totalIVA = calcularIva(total)
-
+        totalIVA = calcularIva(total)
+   }
+        
     const newProducto = {
         producto: nombreForm,
         precio: profitForm,
-        precioIVA: totalIVA,
+        precioIVA: totalIVA ,
         precioTotal: total
     }
     console.log(newProducto)
@@ -52,11 +54,16 @@ const listaProductos = () => {
 
             h2.textContent = `El producto: ${prod.producto}`;
             p.textContent = `Tendra un precio de ${prod.precioTotal}ARS`
+
             parrafo2.textContent = `El precio del producto con IVA: ${prod.precioIVA}`
 
             sectionProducto.appendChild(h2)
             sectionProducto.appendChild(p)
-            sectionProducto.appendChild(parrafo2)
+            prod.precioIVA === 0 ? (
+             console.log("Sin aagregarle iva")   
+            ):(
+                sectionProducto.appendChild(parrafo2)
+            )
         })
 
     } else {
